@@ -1,5 +1,6 @@
 # POKBON MARKETPLACE  
 
+
 Install dependencies
 
 ```bash
@@ -9,7 +10,7 @@ Install dependencies
 Start the server
 
 ```bash
-  npm start
+  npm start dev
 ```
 
 
