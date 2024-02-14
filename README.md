@@ -1,11 +1,5 @@
 # POKBON MARKETPLACE  
 
-
-
-```bash
-  cd React_E-Commerce
-```
-
 Install dependencies
 
 ```bash
