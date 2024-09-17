@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKBON Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset some basic styles */
+        body, h1, p, ul, li, a {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar Styles */
+        .main-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-nav ul {
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: white;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #ff6f61; /* Background color on hover */
+            color: #fff; /* Text color on hover */
+            border-radius: 5px;
+        }
+
+        /* Dropdown Menu */
+        .main-nav .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 5px;
+        }
+
+        .main-nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .main-nav .dropdown-content li {
+            width: 200px;
+        }
+
+        .main-nav .dropdown-content li a {
+            display: block;
+            padding: 10px;
+        }
+
+        /* Hero Section Styles */
+        #hero {
+            background-image: url('banner-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        #hero .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        #hero .hero-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        #hero .cta-buttons .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            margin: 0 10px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        #hero .cta-buttons .btn:hover {
+            background-color: #e05a50;
+        }
+
+        /* Search Bar */
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* General Page Styles */
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        /* Product Grid Styles */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h4 {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #777;
+        }
+
+        .product-card .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .product-card .btn:hover {
+            background-color: #e05a50;
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .category-card {
+            display: block;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer Styles */
+        #footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        #footer .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        #footer .footer-section {
+            flex: 1;
+            margin: 10px;
+        }
+
+        #footer .footer-section h3 {
+            margin-bottom: 20px;
+        }
+
+        #footer .footer-section p,
+        #footer .footer-section ul {
+            margin-bottom: 20px;
+        }
+
+        #footer .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        #footer .social a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        #footer .social img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li class="dropdown">
+                <a href="categories.html">Categories</a>
+                <ul class="dropdown-content">
+                    <li><a href="Consumer Electronics.html">Consumer Electronics</a></li>
+                    <li><a href="Home Appliances.html">Home Appliances</a></li>
+                    <li><a href="Mother Kids & Toys.html">Mother, Kids & Toys</a></li>
+                    <li><a href="Kitchen Appliances.html">Kitchen Appliances</a></li>
+                    <li><a href="Office Gadgets.html">Office Gadgets</a></li>
+                    <li><a href="Lagguge, Bags & Cases.html">Lagguge, Bags & Cases</a></li>
+                    <li><a href="TV Sets.html">TV Sets</a></li>
+                    <li><a href="Apparel & Accessories.html">Apparel & Accessories</a></li>
+                </ul>
+            </li>
+            <li><a href="about us.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="Search products...">
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Quality Products from China to Your Doorstep</h1>
+            <p>Explore our range of top-quality products at unbeatable prices.</p>
+            <div class="cta-buttons">
+                <a href="#categories" class="btn">Shop Now</a>
+                <a href="#featured" class="btn">Browse Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="featured">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <!-- Example Product Card -->
+            <div class="product-card">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product Name 1</h3>
+                <p>$29.99</p>
+                <h4>Description of product goes here</h4>
+                <button class="btn">Add to Order</button>
+            </div>
+
+            <div class="product-card">
+                <img src="product2.jpg" alt="Product 2">
+                <h3>Product Name 2</h3>
+                <p>$49.99</p>
+                <h4>Description of product goes here</h4>
+                <button class="btn">Add to Order</button>
+            </div>
+
+            <!-- Add more product cards as needed -->
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories">
+        <h2>Explore Our Categories</h2>
+        <div class="categories-grid">
+            <!-- Example Category Card -->
+            <a href="Consumer Electronics.html" class="category-card">
+                <img src="consumer-electronics.jpg" alt="Consumer Electronics">
+                <h3>Consumer Electronics</h3>
+            </a>
+
+            <a href="Home Appliances.html" class="category-card">
+                <img src="home-appliances.jpg" alt="Home Appliances">
+                <h3>Home Appliances</h3>
+            </a>
+
+            <!-- Add more category cards as needed -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About POKBON Marketplace</h3>
+                <p>POKBON Marketplace brings you the best products from China to Ghana. Shop with us for the best quality at unbeatable prices.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 POKBON Marketplace. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

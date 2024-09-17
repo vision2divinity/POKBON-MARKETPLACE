@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Pokbon Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Include the Navigation Bar Here -->
+    <nav class="main-nav">
+        <!-- (Navigation links as updated above) -->
+    </nav>
+
+    <!-- Contact Us Page Content -->
+    <main>
+        <section id="contact">
+            <h1>Contact Us</h1>
+            <p>If you have any questions, feel free to reach out to us. We're here to help!</p>
+            <form action="contact-form-handler.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Include the Footer Here -->
+    <footer id="footer">
+        <!-- Footer content, same as you've defined previously -->
+    </footer>
+</body>
+</html>
